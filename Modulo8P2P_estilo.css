@@ -1,0 +1,9 @@
+@charset "utf-8";
+/* CSS Document */
+
+
+H1 { font-family: "Cambria", serif; font-size: 16pt; margin-top: 0.14in; margin-bottom: 0in; margin-left: 5px; direction: ltr; color: #000000; }
+H2 { font-family: "Cambria", serif; font-size: 14pt; margin-top: 0.14in; margin-bottom: 0in; margin-left: 5px;direction: ltr; color: #4f81bd;}
+H3 { font-family: "Cambria", serif; font-size: 12pt; margin-top: 50px; margin-bottom: 0in; margin-left: 5px;direction: ltr; color: #4f81bd;}
+H4 { font-family: "Cambria", serif; font-size: 12pt; margin-top: 10px; margin-bottom: 0in; margin-left: 5px;direction: ltr; color: #4f81bd;}
+P { font-family: "Cambria", serif; font-size: 12pt; margin-bottom: 0.08in;  margin-left: 5px;  }

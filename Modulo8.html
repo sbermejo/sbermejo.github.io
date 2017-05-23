@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<link href="Modulo8P2P_estilo.css" rel="stylesheet" type="text/css">
+<title>P2P Modulo 8: Cronometro</title>
+<script type="text/javascript" src="zepto.min.js" > </script>
+<script type="text/javascript" src="touch.js" > </script>
+<script type="text/javascript">
+
+  $(function(){ 
+    var t, cl = $("#crono");    // variables cronometro
+    var tactil= $("#tabla");  // variables zona tactil
+    var xIni, yIni;           // variables zona tactil
+    localStorage.list=( localStorage.list || 0);
+    function mostrar()  { cl.html((+cl.html() + 0.1).toFixed(1)); };
+    function arrancar() { t=setInterval(mostrar, 100);};
+    function parar()    { clearInterval(t);  t=undefined; grabarvalor(); };
+    function cambiar()  { if (!t) arrancar(); else parar(); };
+    //gestion del local storage
+    function grabarvalor(){
+      if (localStorage.list !== "0"){
+        localStorage.list=localStorage.list + cl.html() + "</br>";
+      } else {
+        localStorage.list= "Segundos en los que se ha parado el cronometro" + "</br>" + cl.html() + "</br>";
+      };
+      $("#lista").html(localStorage.list);
+    };
+    //gestion de la inicializacion
+    function inicializacion(){
+        if (!t) {
+          cl.html("0.0"); 
+          localStorage.list= "0";
+          $("#lista").html("");
+        };
+    };
+    
+    //gestion de clicks
+    $("#cambiar").on('click', cambiar);
+    $("#inicializar").on('click', inicializacion);
+
+    // gestion swipe
+    tactil.on('swipeRight', inicializacion);
+    tactil.on('swipeLeft', inicializacion);
+
+    // gestion touch
+    tactil.on('singleTap', cambiar);
+  });
+  
+</script>
+</head>
+<body>
+<h2 align="center">Cronómetro</h2>
+<p align="center">En dispositivos tactiles, pulse sobre el cronometro para arrancar/parar y deslice el dedo para inicializar.</p>
+
+<table id="tabla" align="center" width="242" height="355" background="crono2.png">
+  <Tr>
+    <Td align="center"> <h1> <span id="crono"> 0.0 </span> segundos </h1>   </td>
+  </tr>
+</table> 
+
+<div align="center">
+  <button type="button" id="cambiar"> arrancar/parar </button>
+  <button type="button" id="inicializar">  inicializar </button>
+</div>
+<div id="lista" align="center"> </div>
+</body>
+</html>
+
